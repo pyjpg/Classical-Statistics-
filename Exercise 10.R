@@ -38,9 +38,6 @@ standarised_residuals
 # Using the package 'MASS' to get the standarised residuals
 stdres(fibre.aov)
 
-
-
-
 # Exercise 10.1 Find the observed residuals and fitted values 
 
 # Set up the dataframe of investigation (Colombian molasses)
@@ -51,3 +48,18 @@ molasses <- data.frame(
   C = c(82.1, 79.6, 83.1, 80.7, 81.8, 79.9, 82.6, 81.9)
 )
 molasses_stacked <- stack(molasses)
+
+
+# Set up the ANOVA for the molasses
+A = c(81.6, 81.3, 82.0, 79.6, 78.4, 81.8, 80.2, 80.7)
+B = c(81.8, 84.7, 82.0, 85.6, 79.9, 83.2, 84.1, 85.0)
+C = c(82.1, 79.6, 83.1, 80.7, 81.8, 79.9, 82.6, 81.9)
+quantity <- c(A,B,C)
+
+location <- rep(c("Location A","Location B","Location C"), each=8)
+molasses.aov <- aov(values ~ ind, data = molasses_stacked)
+summary(molasses.aov)
+mol_residuals <- residuals(molasses.aov)
+mol_residuals
+fitted_values <- fitted(molasses.aov)
+fitted_values
