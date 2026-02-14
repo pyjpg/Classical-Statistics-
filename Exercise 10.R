@@ -38,6 +38,20 @@ standarised_residuals
 # Using the package 'MASS' to get the standarised residuals
 stdres(fibre.aov)
 
+# Example 10.3 deriving the normality of our distribution.
+
+# summary stats for observed standardised residuals of fibres
+summary(stdres(fibre.aov))
+
+# Create breakpoints for historgram
+break.points <- c(-1.75, -1.25, -0.75, -0.25, 0.25, 0.75, 1.25, 1.75, 2.25)
+
+# [plot histrogram with obs standarised residuals and break points ]
+
+hist(stdres(fibre.aov), breaks = break.points)
+
+## possibly skewed to the right, not serious normality in error dist, but not enough data for any firm conclusions.
+
 # Exercise 10.1 Find the observed residuals and fitted values 
 
 # Set up the dataframe of investigation (Colombian molasses)
@@ -63,3 +77,6 @@ mol_residuals <- residuals(molasses.aov)
 mol_residuals
 fitted_values <- fitted(molasses.aov)
 fitted_values
+standardised_residuals <- stdres(molasses.aov)
+standardised_residuals
+plot(fitted_values, standardised_residuals) 
