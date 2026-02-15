@@ -17,6 +17,22 @@ attach(paint.data)
 # Draw a scatter plot
 plot(stirring.rpm, impurity.percentage, xlab="stirring rate (rpm)", ylab="impurity percentage")
 
+# Perform a regression analysis on the paint data 
+paint.linear.model <- lm(impurity.percentage ~ stirring.rpm, data=paint.data)
+paint.linear.model
+summary(paint.linear.model)
+paint.aov <- anova(paint.linear.model)
+
+# Example 11.4 observed Test statistic 
+paint.aov
+
+# Calculate Paint data frame observerd fitted values
+paint.fitted.values <- fitted(paint.linear.model)
+paint.fitted.values
+
+# Calculate observed residuals
+paint.residuals <- residuals(paint.linear.model)
+paint.residuals
 
 
 
@@ -24,3 +40,16 @@ plot(stirring.rpm, impurity.percentage, xlab="stirring rate (rpm)", ylab="impuri
 initial.weight <- c(50,64,76,64,74,60,69,68,56,48,57,59,46,45,65)
 weight.gain <- c(128,159,158,119,133,112,96,126,132,118,107,106,82,103,104)
 kitty.data <- data.frame(initial.weight, weight.gain)
+
+
+attach(kitty.data)
+plot(initial.weight, weight.gain, xlab="initial weight (grams)", ylab="weight gain (grams)", main="weight gain vs inital weight")
+kitty.linear.model <- lm(weight.gain ~ initial.weight, data=paint.data)
+summary(kitty.linear.model)
+kitty.linear.model
+
+kitty.anova <- anova(kitty.linear.model)
+kitty.anova
+
+# There tends to be a somewhat linear relationship between initial weight and weight gain, with on average being 1.064 * initial weight larger however this is not very strong
+
