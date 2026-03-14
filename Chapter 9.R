@@ -25,6 +25,10 @@ fibre
 
 # Calculate the point-estimates and 95% CIs for each treatment mean
 
+
+# Mean for all the strength percentiles in the entry
+mu_hat <-mean(fibre$strength)
+
 # Mean for percentage 15
 u1 <- mean(fibre$strength[fibre$percent==15])
 # Mean for percentage 20
@@ -35,4 +39,21 @@ u3 <- mean(fibre$strength[fibre$percent==25])
 u4 <- mean(fibre$strength[fibre$percent==30])
 # Mean for percentage 35
 u5 <- mean(fibre$strength[fibre$percent==35])
+
+# t_hat for each of the percentages
+t_hat1 <- (u1 - mu_hat)
+t_hat2 <- (u2 - mu_hat)
+t_hat3 <- (u3 - mu_hat)
+t_hat4 <- (u4 - mu_hat)
+t_hat5 <- (u5 - mu_hat)
+
+# ANOVA Table analysis of strength againist percentage
+fibre.aov <- aov(strength ~ percent, data = fibre)
+summary(fibre.aov)
+
+# Example 9.2 Pairwise comparison
+
+
+
+
 

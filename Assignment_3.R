@@ -33,3 +33,21 @@ species_petal_length
 # ANOVA Table
 species_petal_length.aov <- aov(data_iris$Petal.Length ~ data_iris$Species, data = species_petal_length)
 summary(species_petal_length.aov)
+
+# Work out the observed standard error
+observed_standard_error <- sqrt(0.19)*sqrt(1/50+1/50)
+
+# work out the least significant difference
+
+lsd <- qt(0.975,147)*sqrt(0.19)*sqrt(1/50+1/50)
+lsd
+
+# u1 is the mean value for setosa and u3 is the mean value for virginica
+difference <- u1 - u3
+
+# calculate the lower and upper bounds for the 95% Confidence Interval
+upper_bound <- difference + lsd
+lower_bound <- difference - lsd
+
+upper_bound
+lower_bound
