@@ -27,3 +27,9 @@ t_hat2 <- (u2 - mu_hat)
 # t_hat value for flower type "virginica"
 t_hat3 <- (u3 - mu_hat)
 
+# Create data frame specifically for petal length and species as those are the variables we are focusing on
+species_petal_length <- data.frame(data_iris$Petal.Length, data_iris$Species)
+species_petal_length
+# ANOVA Table
+species_petal_length.aov <- aov(data_iris$Petal.Length ~ data_iris$Species, data = species_petal_length)
+summary(species_petal_length.aov)
