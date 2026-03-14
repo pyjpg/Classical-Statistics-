@@ -28,8 +28,11 @@ fibre
 # Mean for percentage 15
 u1 <- mean(fibre$strength[fibre$percent==15])
 # Mean for percentage 20
-u1 <- mean(fibre$strength[fibre$percent==20])
-# Mean for percentage 15
-u1 <- mean(fibre$strength[fibre$percent==15])# Mean for percentage 15
-u1 <- mean(fibre$strength[fibre$percent==15])# Mean for percentage 15
-u1 <- mean(fibre$strength[fibre$percent==15])
+u2 <- mean(fibre$strength[fibre$percent==20])
+# Mean for percentage 25
+u3 <- mean(fibre$strength[fibre$percent==25])
+# Mean for percentage 30
+u4 <- mean(fibre$strength[fibre$percent==30])
+# Mean for percentage 35
+u5 <- mean(fibre$strength[fibre$percent==35])
+
