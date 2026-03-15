@@ -97,7 +97,7 @@ plot(fitted(virginica_petal_info.linearmodel),
      main = "Fitted Values vs Standardised Residuals")
 
 
-# Plot QQ-Plot of resdiuals againist normal scores
-qqnorm(stdres(virginica_petal_info.linearmodel),
-       main = "Normal Q-Q Plot of Standardised Residuals")
+# Plot QQ-Plot of residuals against normal scores
+qqnorm(stdres(virginica_petal_info.aov),
+       main = "Normal QQ Plot of Standardised Residuals")
 abline(0, 1)
