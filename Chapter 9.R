@@ -51,8 +51,21 @@ t_hat5 <- (u5 - mu_hat)
 fibre.aov <- aov(strength ~ percent, data = fibre)
 summary(fibre.aov)
 
-# Example 9.2 Pairwise comparison
+# Chapter 10 residual analysis here and continue
 
+# Calculate the observed residuals
+fibre.residuals <- residuals(fibre.aov)
+fibre.residuals
+
+# For observed standard residuals for this particular dataset use MS-residuals and ni where ni = 5 in this case
+sigma.squared.estimate <- 8.06
+
+# Calculate observed standard residuals 
+fibre.standardised.residuals <- fibre.residuals / sqrt(sigma.squared.estimate*(1-1/5))
+fibre.standardised.residuals
+
+# Plot the observed standardised residuals againist the observed fitted values
+plot(fitted(fibre.aov), fibre.standardised.residuals)
 
 
 
