@@ -65,5 +65,39 @@ virginica_petal_info.linearmodel <- lm(Petal.Length ~ Petal.Width, data = virgin
 # Use summary to inspect the values in the linear regression model
 summary(virginica_petal_info.linearmodel)
 
+# ANOVA Table for virginica flower info
+virginica_petal_info.aov <- aov(Petal.Length ~ Petal.Width, data = virginica_petal_info)
+summary(virginica_petal_info.aov)
+
+# Calculate the observed residuals
+virginica.residuals <- residuals(virginica_petal_info.aov)
+virginica.residuals
+
+# For observed standard residuals and MS-residuals and ni where ni = 50 in this case
+sigma.squared.estimate <- 0.2787
+
+# Calculate observed standard residuals 
+virginica.standardised.residuals <- virginica.residuals / sqrt(sigma.squared.estimate*(1-1/50))
+virginica.standardised.residuals
+
+# Plot the observed standardised residuals against the observed fitted values
+plot(fitted(virginica_petal_info.aov), 
+     virginica.standardised.residuals,
+     xlab = "Fitted Values",
+     ylab = "Standardised Residuals",
+     main = "Fitted Values vs Standardised Residuals")
+
+# Alternative equivalent method to produce the same scatter plot using the 'MASS' package
+install.packages("MASS")
+library(MASS)
+plot(fitted(virginica_petal_info.linearmodel), 
+     stdres(virginica_petal_info.linearmodel),
+     xlab = "Fitted Values",
+     ylab = "Standardised Residuals",
+     main = "Fitted Values vs Standardised Residuals")
 
 
+# Plot QQ-Plot of resdiuals againist normal scores
+qqnorm(stdres(virginica_petal_info.linearmodel),
+       main = "Normal Q-Q Plot of Standardised Residuals")
+abline(0, 1)
